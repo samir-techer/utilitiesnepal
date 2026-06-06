@@ -1,643 +1,126 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Utilities Nepal - The Digital Hub for Nepal. Built by ordinary people, for ordinary people. Discover powerful tools for students, creators, and everyday Nepalis.">
-  <meta name="keywords" content="Utilities Nepal, Nepal tools, Nepali apps, Audix, NebTools, Nepal utilities, digital Nepal">
-  <meta name="author" content="Utilities Nepal">
-  <meta name="theme-color" content="#0E7490">
-  <meta name="color-scheme" content="light dark">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Utilities Nepal - The Digital Hub for Nepal">
-  <meta property="og:description" content="Discover powerful tools built for students, creators, and everyday people across Nepal.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://utilitiesnepal.github.io">
-  <meta property="og:image" content="https://utilitiesnepal.github.io/assets/og-image.png">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Utilities Nepal">
-  <meta name="twitter:description" content="The Digital Hub for Nepal. Built by ordinary people, for ordinary people.">
-
-  <title>Utilities Nepal - The Digital Hub for Nepal</title>
-  <script type="application/ld+json">
-{
- "@context":"https://schema.org",
- "@type":"Organization",
- "name":"Utilities Nepal",
- "url":"https://samir-techer.github.io/utilitiesnepal/"
-}
-  </script>
-
-  <!-- Preconnect -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230E7490'/%3E%3Ctext x='50' y='65' font-size='45' text-anchor='middle' fill='white' font-family='Arial'%3EUN%3C/text%3E%3C/svg%3E">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect width='180' height='180' rx='40' fill='%230E7490'/%3E%3Ctext x='90' y='120' font-size='80' text-anchor='middle' fill='white' font-family='Arial'%3EUN%3C/text%3E%3C/svg%3E">
-
-  <!-- PWA -->
-  <link rel="manifest" href="manifest.json">
-
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="description" content="Utilities Nepal - Nepal's Digital Toolbox. Date converter, currency, weather, notes, AI study assistant, radio, news, career portal. Built by Nepalis, for Nepalis.">
+<meta name="keywords" content="Nepal utilities, Nepali date converter, Nepal weather, Nepal radio, Nepal news, Nepal jobs, Nepali tools">
+<meta name="author" content="Utilities Nepal">
+<meta name="theme-color" content="#0E7490">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Utilities Nepal - Nepal's Digital Toolbox">
+<meta property="og:description" content="Powerful tools built for everyday Nepalis. Date converter, currency, weather, notes, study assistant, radio, news, jobs.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Utilities Nepal">
+<title>Utilities Nepal - Nepal's Digital Toolbox</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230E7490'/%3E%3Ctext x='50' y='68' font-size='45' text-anchor='middle' fill='white' font-family='Arial'%3EUN%3C/text%3E%3C/svg%3E">
 </head>
 <body>
-  <!-- Skip Link -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
+<a href="#main" class="skip-link">Skip to main content</a>
 
-  <!-- Navigation -->
-  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
-    <div class="nav-container">
-      <a href="#" class="nav-logo" aria-label="Utilities Nepal Home">
-        <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M24 4L4 14v20l20 10 20-10V14L24 4z" stroke="currentColor" stroke-width="2" fill="none"/>
-          <path d="M24 4v20M4 14l20 10 20-10" stroke="currentColor" stroke-width="2"/>
-          <circle cx="24" cy="24" r="4" fill="currentColor"/>
-        </svg>
-        <span class="logo-text" data-en="Utilities Nepal" data-ne="यूटिलिटिज नेपाल">Utilities Nepal</span>
-      </a>
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+<div class="nav-container">
+<a href="#dashboard" class="nav-logo" onclick="app.navigate('dashboard')">
+<svg class="logo-icon" viewBox="0 0 48 48" fill="none"><path d="M24 4L4 14v20l20 10 20-10V14L24 4z" stroke="currentColor" stroke-width="2"/><path d="M24 4v20M4 14l20 10 20-10" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="4" fill="currentColor"/></svg>
+<span class="logo-text">Utilities Nepal</span>
+</a>
+<button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+<span></span><span></span><span></span>
+</button>
+<div class="nav-menu" id="navMenu">
+<ul class="nav-links">
+<li><a href="#dashboard" class="nav-link active" data-page="dashboard" onclick="app.navigate('dashboard')">Home</a></li>
+<li><a href="#tools" class="nav-link" data-page="tools" onclick="app.navigate('tools')">Tools</a></li>
+<li><a href="#radio" class="nav-link" data-page="radio" onclick="app.navigate('radio')">Radio</a></li>
+<li><a href="#news" class="nav-link" data-page="news" onclick="app.navigate('news')">News</a></li>
+<li><a href="#career" class="nav-link" data-page="career" onclick="app.navigate('career')">Career</a></li>
+</ul>
+<div class="nav-actions">
+<button class="icon-btn" id="globalSearchBtn" aria-label="Search" title="Search (Ctrl+K)">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+</button>
+<button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+<svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+<svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+</button>
+</div>
+</div>
+</div>
+</nav>
 
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navMenu">
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-        <span class="hamburger-line"></span>
-      </button>
+<!-- Global Search Overlay -->
+<div class="search-overlay" id="searchOverlay" aria-hidden="true">
+<div class="search-container">
+<button class="search-close" id="searchClose">&times;</button>
+<div class="search-input-wrap">
+<svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+<input type="search" id="globalSearchInput" placeholder="Search tools, features, news..." autocomplete="off">
+</div>
+<div class="search-suggestions" id="searchSuggestions"></div>
+<div class="search-results" id="searchResults"></div>
+</div>
+</div>
 
-      <div class="nav-menu" id="navMenu">
-        <ul class="nav-links">
-          <li><a href="#home" class="nav-link active" data-en="Home" data-ne="गृहपृष्ठ">Home</a></li>
-          <li><a href="#products" class="nav-link" data-en="Products" data-ne="उत्पादनहरू">Products</a></li>
-          <li><a href="#community" class="nav-link" data-en="Community" data-ne="समुदाय">Community</a></li>
-          <li><a href="#about" class="nav-link" data-en="About" data-ne="हाम्रोबारे">About</a></li>
-          <li><a href="#contact" class="nav-link" data-en="Contact" data-ne="सम्पर्क">Contact</a></li>
-        </ul>
+<!-- Main Content -->
+<main id="main" class="main-content">
+<!-- Pages injected here by JS -->
+</main>
 
-        <div class="nav-actions">
-          <button class="search-btn" id="searchBtn" aria-label="Search" title="Search">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="11" cy="11" r="8"/>
-              <path d="m21 21-4.3-4.3"/>
-            </svg>
-          </button>
-          <button class="lang-toggle" id="langToggle" aria-label="Switch language" title="Switch to Nepali">
-            <span class="lang-current">EN</span>
-            <span class="lang-separator">/</span>
-            <span class="lang-alt">NP</span>
-          </button>
-          <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle dark mode">
-            <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5"/>
-              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-            </svg>
-            <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-  </nav>
+<!-- Audio Player (Fixed Bottom for Radio) -->
+<div class="audio-player" id="audioPlayer" style="display:none;">
+<div class="player-info">
+<div class="player-station" id="playerStation">Select a station</div>
+<div class="player-status" id="playerStatus">Ready</div>
+</div>
+<div class="player-controls">
+<button class="player-btn" id="playerPlayPause" aria-label="Play/Pause">
+<svg id="playIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+<svg id="pauseIcon" viewBox="0 0 24 24" fill="currentColor" style="display:none"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/></svg>
+</button>
+<input type="range" id="playerVolume" min="0" max="1" step="0.01" value="0.8" aria-label="Volume">
+<button class="player-btn" id="playerClose" aria-label="Close player">&times;</button>
+</div>
+</div>
 
-  <!-- Search Overlay -->
-  <div class="search-overlay" id="searchOverlay" role="dialog" aria-label="Search" aria-hidden="true">
-    <div class="search-container">
-      <button class="search-close" id="searchClose" aria-label="Close search">&times;</button>
-      <div class="search-input-wrapper">
-        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"/>
-          <path d="m21 21-4.3-4.3"/>
-        </svg>
-        <input type="search" class="search-input" id="searchInput" placeholder="Search tools, features, categories..." aria-label="Search" autocomplete="off">
-      </div>
-      <div class="search-tags">
-        <button class="search-tag" data-query="Music">Music</button>
-        <button class="search-tag" data-query="Education">Education</button>
-        <button class="search-tag" data-query="Calculators">Calculators</button>
-        <button class="search-tag" data-query="GPA">GPA</button>
-        <button class="search-tag" data-query="Audix">Audix</button>
-        <button class="search-tag" data-query="NebTools">NebTools</button>
-      </div>
-      <div class="search-results" id="searchResults"></div>
-    </div>
-  </div>
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
 
-  <!-- Main Content -->
-  <main id="main-content">
+<!-- Install Prompt -->
+<div class="install-prompt" id="installPrompt" style="display:none;">
+<div class="install-content">
+<svg class="install-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+<div class="install-text">
+<strong>Install Utilities Nepal</strong>
+<span>Add to your home screen for quick access</span>
+</div>
+<button class="install-btn" id="installBtn">Install</button>
+<button class="install-dismiss" id="installDismiss">&times;</button>
+</div>
+</div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home" aria-label="Hero">
-      <div class="hero-bg" aria-hidden="true">
-        <div class="gradient-orb orb-1"></div>
-        <div class="gradient-orb orb-2"></div>
-        <div class="gradient-orb orb-3"></div>
-        <div class="grid-pattern"></div>
-      </div>
+<!-- Toast -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-      <div class="hero-content">
-        <div class="hero-badge">
-          <span class="badge-dot"></span>
-          <span data-en="Built in Nepal, for Nepal" data-ne="नेपालमा निर्मित, नेपालका लागि">Built in Nepal, for Nepal</span>
-        </div>
-
-        <h1 class="hero-title">
-          <span class="title-line" data-en="Everything You Need." data-ne="तपाईंलाई चाहिने सबै।">Everything You Need.</span>
-          <span class="title-line highlight" data-en="One Nepali Platform." data-ne="एक नेपाली प्लेटफर्म।">One Nepali Platform.</span>
-        </h1>
-
-        <p class="hero-subtitle" data-en="Discover powerful tools built for students, creators, and everyday people across Nepal." data-ne="नेपालभरका विद्यार्थी, सिर्जनाकार, र दैनिक जीवनका लागि निर्मित शक्तिशाली उपकरणहरू खोज्नुहोस्।">
-          Discover powerful tools built for students, creators, and everyday people across Nepal.
-        </p>
-
-        <div class="hero-cta">
-          <a href="#products" class="btn btn-primary">
-            <span data-en="Explore Tools" data-ne="उपकरणहरू हेर्नुहोस्">Explore Tools</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </a>
-          <a href="#community" class="btn btn-secondary">
-            <span data-en="Join Community" data-ne="समुदायमा सामेल हुनुहोस्">Join Community</span>
-          </a>
-        </div>
-
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-number" id="statTools">2+</span>
-            <span class="stat-label" data-en="Tools Available" data-ne="उपलब्ध उपकरणहरू">Tools Available</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number" id="statUsers">10K+</span>
-            <span class="stat-label" data-en="Users Served" data-ne="सेवा गरिएका प्रयोगकर्ताहरू">Users Served</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number" id="statRequests">50+</span>
-            <span class="stat-label" data-en="Requests Completed" data-ne="पूरा गरिएका अनुरोधहरू">Requests Completed</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="scroll-indicator" aria-hidden="true">
-        <div class="scroll-mouse">
-          <div class="scroll-wheel"></div>
-        </div>
-        <span data-en="Scroll to explore" data-ne="अन्वेषण गर्न स्क्रोल गर्नुहोस्">Scroll to explore</span>
-      </div>
-    </section>
-
-    <!-- Products Section -->
-    <section class="section products" id="products" aria-labelledby="products-heading">
-      <div class="section-container">
-        <div class="section-header">
-          <span class="section-tag" data-en="Our Products" data-ne="हाम्रा उत्पादनहरू">Our Products</span>
-          <h2 id="products-heading" class="section-title" data-en="Tools That Empower Nepal" data-ne="नेपाललाई सशक्त बनाउने उपकरणहरू">Tools That Empower Nepal</h2>
-          <p class="section-desc" data-en="Powerful, accessible, and built with Nepali needs in mind." data-ne="शक्तिशाली, पहुँचयोग्य, र नेपाली आवश्यकताहरूलाई ध्यानमा राखेर निर्मित।">Powerful, accessible, and built with Nepali needs in mind.</p>
-        </div>
-
-        <div class="products-grid" id="productsGrid">
-          <!-- Audix Card -->
-          <article class="product-card" data-category="music entertainment" data-name="audix music player" data-search="music audix player radio playlist lyrics">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <div class="card-icon-wrapper" style="--icon-color: #8B5CF6;">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 38c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8z"/>
-                  <path d="M28 30V12l12-6v18"/>
-                  <circle cx="40" cy="24" r="4"/>
-                  <path d="M12 30V8l12-6v18"/>
-                </svg>
-              </div>
-              <div class="card-meta">
-                <span class="card-category" data-en="Music & Entertainment" data-ne="संगीत र मनोरञ्जन">Music & Entertainment</span>
-                <span class="card-status active" data-en="Live" data-ne="सक्रिय">Live</span>
-              </div>
-              <h3 class="card-title">Audix</h3>
-              <p class="card-desc" data-en="AI-powered music player with radio, playlists, lyrics, and smart audio features." data-ne="रेडियो, प्लेलिस्ट, गीत, र स्मार्ट अडियो सुविधाहरूसहित AI-संचालित संगीत प्लेयर।">
-                AI-powered music player with radio, playlists, lyrics, and smart audio features.
-              </p>
-              <div class="card-features">
-                <span class="feature-tag" data-en="AI Music" data-ne="AI संगीत">AI Music</span>
-                <span class="feature-tag" data-en="Radio" data-ne="रेडियो">Radio</span>
-                <span class="feature-tag" data-en="Lyrics" data-ne="गीत">Lyrics</span>
-              </div>
-              <a href="https://b4tler-org.github.io/Audix.Player/" target="_blank" rel="noopener noreferrer" class="card-btn">
-                <span data-en="Launch Audix" data-ne="Audix खोल्नुहोस्">Launch Audix</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M7 17L17 7M17 7H7M17 7v10"/>
-                </svg>
-              </a>
-            </div>
-          </article>
-
-          <!-- NebTools Card -->
-          <article class="product-card" data-category="education" data-name="nebtools" data-search="education nebtools gpa calculator accounting formula study">
-            <div class="card-glow"></div>
-            <div class="card-content">
-              <div class="card-icon-wrapper" style="--icon-color: #10B981;">
-                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 6h24v36H12z"/>
-                  <path d="M18 6v36M30 6v36"/>
-                  <path d="M12 14h24M12 22h24M12 30h24"/>
-                  <circle cx="21" cy="18" r="1.5" fill="currentColor"/>
-                  <circle cx="27" cy="26" r="1.5" fill="currentColor"/>
-                  <circle cx="21" cy="34" r="1.5" fill="currentColor"/>
-                </svg>
-              </div>
-              <div class="card-meta">
-                <span class="card-category" data-en="Education" data-ne="शिक्षा">Education</span>
-                <span class="card-status active" data-en="Live" data-ne="सक्रिय">Live</span>
-              </div>
-              <h3 class="card-title">NebTools</h3>
-              <p class="card-desc" data-en="Smart NEB study tools including GPA calculators, accounting automators, and formula libraries." data-ne="GPA क्याल्कुलेटर, लेखा स्वचालन, र सूत्र लाइब्रेरीसहित स्मार्ट NEB अध्ययन उपकरणहरू।">
-                Smart NEB study tools including GPA calculators, accounting automators, and formula libraries.
-              </p>
-              <div class="card-features">
-                <span class="feature-tag" data-en="GPA Calculator" data-ne="GPA क्याल्कुलेटर">GPA Calculator</span>
-                <span class="feature-tag" data-en="Accounting" data-ne="लेखा">Accounting</span>
-                <span class="feature-tag" data-en="Formulas" data-ne="सूत्रहरू">Formulas</span>
-              </div>
-              <a href="https://samir-techer.github.io/nebtools/" target="_blank" rel="noopener noreferrer" class="card-btn">
-                <span data-en="Launch NebTools" data-ne="NebTools खोल्नुहोस्">Launch NebTools</span>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M7 17L17 7M17 7H7M17 7v10"/>
-                </svg>
-              </a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Nepal Utilities Section -->
-    <section class="section utilities" id="utilities" aria-labelledby="utilities-heading">
-      <div class="section-container">
-        <div class="section-header">
-          <span class="section-tag" data-en="Coming Soon" data-ne="चाँडै आउँदैछ">Coming Soon</span>
-          <h2 id="utilities-heading" class="section-title" data-en="Nepal Utilities" data-ne="नेपाल यूटिलिटिज">Nepal Utilities</h2>
-          <p class="section-desc" data-en="Essential tools designed specifically for daily life in Nepal." data-ne="नेपालको दैनिक जीवनका लागि विशेष रूपमा डिजाइन गरिएका आवश्यक उपकरणहरू।">Essential tools designed specifically for daily life in Nepal.</p>
-        </div>
-
-        <div class="utilities-grid">
-          <article class="utility-card coming-soon" data-search="date converter bs ad bikram sambat calendar">
-            <div class="utility-icon" style="--utility-color: #F59E0B;">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="8" y="8" width="32" height="32" rx="4"/>
-                <path d="M8 16h32M16 4v8M32 4v8"/>
-                <path d="M16 24h4v4h-4zM24 24h4v4h-4zM32 24h4v4h-4z"/>
-                <path d="M16 32h4v4h-4zM24 32h4v4h-4z"/>
-              </svg>
-            </div>
-            <h3 class="utility-title" data-en="Date Converter" data-ne="मिति परिवर्तक">Date Converter</h3>
-            <p class="utility-desc" data-en="Convert between Bikram Sambat (BS) and Anno Domini (AD) calendars instantly." data-ne="बिक्रम संवत (BS) र एनो डोमिनी (AD) क्यालेन्डर बीच तत्काल रूपान्तरण गर्नुहोस्।">Convert between Bikram Sambat (BS) and Anno Domini (AD) calendars instantly.</p>
-            <span class="coming-soon-badge" data-en="Coming Soon" data-ne="चाँडै आउँदैछ">Coming Soon</span>
-          </article>
-
-          <article class="utility-card coming-soon" data-search="currency converter npr usd inr money exchange">
-            <div class="utility-icon" style="--utility-color: #10B981;">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="24" cy="24" r="18"/>
-                <path d="M24 14v20M18 18h8a4 4 0 0 1 0 8h-8M20 14h8M20 34h8"/>
-              </svg>
-            </div>
-            <h3 class="utility-title" data-en="Currency Converter" data-ne="मुद्रा परिवर्तक">Currency Converter</h3>
-            <p class="utility-desc" data-en="Real-time NPR to USD, INR, and other major currency conversions." data-ne="वास्तविक समयमा NPR देखि USD, INR, र अन्य प्रमुख मुद्रा रूपान्तरण।">Real-time NPR to USD, INR, and other major currency conversions.</p>
-            <span class="coming-soon-badge" data-en="Coming Soon" data-ne="चाँडै आउँदैछ">Coming Soon</span>
-          </article>
-
-          <article class="utility-card coming-soon" data-search="unit converter length weight volume measurement">
-            <div class="utility-icon" style="--utility-color: #3B82F6;">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M8 40V8l8 8 8-8 8 8 8-8v32"/>
-                <path d="M8 24h32"/>
-                <path d="M16 16v16M24 16v16M32 16v16"/>
-              </svg>
-            </div>
-            <h3 class="utility-title" data-en="Unit Converter" data-ne="इकाइ परिवर्तक">Unit Converter</h3>
-            <p class="utility-desc" data-en="Convert between metric, imperial, and traditional Nepali units." data-ne="मेट्रिक, इम्पेरियल, र परम्परागत नेपाली इकाइहरू बीच रूपान्तरण गर्नुहोस्।">Convert between metric, imperial, and traditional Nepali units.</p>
-            <span class="coming-soon-badge" data-en="Coming Soon" data-ne="चाँडै आउँदैछ">Coming Soon</span>
-          </article>
-
-          <article class="utility-card coming-soon" data-search="public holiday calendar nepal festival dashain tihar">
-            <div class="utility-icon" style="--utility-color: #EC4899;">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="8" y="8" width="32" height="32" rx="4"/>
-                <path d="M8 16h32"/>
-                <path d="M16 4v8M32 4v8"/>
-                <circle cx="24" cy="28" r="6"/>
-                <path d="M24 22v6l4 2"/>
-              </svg>
-            </div>
-            <h3 class="utility-title" data-en="Holiday Calendar" data-ne="सार्वजनिक बिदा क्यालेन्डर">Holiday Calendar</h3>
-            <p class="utility-desc" data-en="Complete Nepali public holidays, festivals, and event calendar with reminders." data-ne="सम्पूर्ण नेपाली सार्वजनिक बिदाहरू, चाडपर्व, र रिमाइन्डरसहितको कार्यक्रम क्यालेन्डर।">Complete Nepali public holidays, festivals, and event calendar with reminders.</p>
-            <span class="coming-soon-badge" data-en="Coming Soon" data-ne="चाँडै आउँदैछ">Coming Soon</span>
-          </article>
-
-          <article class="utility-card coming-soon" data-search="emergency contact directory police hospital ambulance">
-            <div class="utility-icon" style="--utility-color: #EF4444;">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M24 4L4 14v20l20 10 20-10V14L24 4z"/>
-                <path d="M24 24v12"/>
-                <path d="M24 24l-8-4"/>
-                <path d="M24 24l8-4"/>
-                <circle cx="24" cy="18" r="4" fill="currentColor" opacity="0.3"/>
-                <path d="M20 34h8"/>
-              </svg>
-            </div>
-            <h3 class="utility-title" data-en="Emergency Directory" data-ne="आपतकालीन सम्पर्क निर्देशिका">Emergency Directory</h3>
-            <p class="utility-desc" data-en="Quick access to police, ambulance, fire, and essential emergency contacts across Nepal." data-ne="नेपालभर प्रहरी, एम्बुलेन्स, दमकल, र आवश्यक आपतकालीन सम्पर्कहरूमा छिटो पहुँच।">Quick access to police, ambulance, fire, and essential emergency contacts across Nepal.</p>
-            <span class="coming-soon-badge" data-en="Coming Soon" data-ne="चाँडै आउँदैछ">Coming Soon</span>
-          </article>
-
-          <article class="utility-card coming-soon" data-search="weather tool nepal forecast temperature rain">
-            <div class="utility-icon" style="--utility-color: #06B6D4;">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 32a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/>
-                <path d="M28 20a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/>
-                <path d="M36 28a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
-                <path d="M8 36h32M12 40h24M16 44h16"/>
-              </svg>
-            </div>
-            <h3 class="utility-title" data-en="Weather Tool" data-ne="मौसम उपकरण">Weather Tool</h3>
-            <p class="utility-desc" data-en="Accurate weather forecasts for all regions of Nepal with alerts and radar." data-ne="नेपालका सबै क्षेत्रहरूका लागि सतर्कता र राडारसहितको सही मौसम पूर्वानुमान।">Accurate weather forecasts for all regions of Nepal with alerts and radar.</p>
-            <span class="coming-soon-badge" data-en="Coming Soon" data-ne="चाँडै आउँदैछ">Coming Soon</span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- System Status Section -->
-    <section class="section status-section" id="status" aria-labelledby="status-heading">
-      <div class="section-container">
-        <div class="status-widget">
-          <div class="status-header">
-            <div class="status-indicator">
-              <span class="status-dot pulse"></span>
-              <span class="status-text" data-en="All Systems Operational" data-ne="सबै प्रणालीहरू सञ्चालनमा">All Systems Operational</span>
-            </div>
-            <span class="status-uptime" data-en="99.9% uptime" data-ne="99.9% अपटाइम">99.9% uptime</span>
-          </div>
-          <div class="status-services">
-            <div class="status-service">
-              <span class="service-dot online"></span>
-              <span class="service-name">Audix</span>
-              <span class="service-status" data-en="Online" data-ne="अनलाइन">Online</span>
-            </div>
-            <div class="status-service">
-              <span class="service-dot online"></span>
-              <span class="service-name">NebTools</span>
-              <span class="service-status" data-en="Online" data-ne="अनलाइन">Online</span>
-            </div>
-            <div class="status-service">
-              <span class="service-dot online"></span>
-              <span class="service-name">API</span>
-              <span class="service-status" data-en="Online" data-ne="अनलाइन">Online</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Trust Section -->
-    <section class="section trust" id="about" aria-labelledby="trust-heading">
-      <div class="section-container">
-        <div class="section-header">
-          <span class="section-tag" data-en="Why Us" data-ne="किन हामी">Why Us</span>
-          <h2 id="trust-heading" class="section-title" data-en="Trust & Transparency" data-ne="विश्वास र पारदर्शिता">Trust & Transparency</h2>
-          <p class="section-desc" data-en="We believe in building technology that serves people first." data-ne="हामी मानिसहरूलाई पहिलो रूपमा सेवा गर्ने प्रविधि निर्माण गर्न विश्वास गर्छौं।">We believe in building technology that serves people first.</p>
-        </div>
-
-        <div class="trust-grid">
-          <article class="trust-card">
-            <div class="trust-icon" style="--trust-color: #10B981;">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="8" y="20" width="32" height="24" rx="4"/>
-                <path d="M16 20V14a8 8 0 0 1 16 0v6"/>
-                <circle cx="24" cy="32" r="3"/>
-                <path d="M24 35v3"/>
-              </svg>
-            </div>
-            <h3 class="trust-title" data-en="Privacy First" data-ne="गोपनीयता पहिलो">Privacy First</h3>
-            <p class="trust-desc" data-en="Your data stays yours. No tracking, no selling, no compromises." data-ne="तपाईंको डाटा तपाईंकै हुन्छ। कुनै ट्र्याकिङ, कुनै बिक्री, कुनै सम्झौता छैन।">Your data stays yours. No tracking, no selling, no compromises.</p>
-          </article>
-
-          <article class="trust-card">
-            <div class="trust-icon" style="--trust-color: #8B5CF6;">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 12h24v24H12z"/>
-                <path d="M12 12l24 24M36 12L12 36"/>
-                <circle cx="24" cy="24" r="6"/>
-              </svg>
-            </div>
-            <h3 class="trust-title" data-en="Open Source Friendly" data-ne="ओपन सोर्स अनुकूल">Open Source Friendly</h3>
-            <p class="trust-desc" data-en="We contribute to and support the open source ecosystem that powers our tools." data-ne="हामीले हाम्रा उपकरणहरू सञ्चालन गर्ने ओपन सोर्स इकोसिस्टममा योगदान र समर्थन गर्छौं।">We contribute to and support the open source ecosystem that powers our tools.</p>
-          </article>
-
-          <article class="trust-card">
-            <div class="trust-icon" style="--trust-color: #F59E0B;">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M24 4L4 14v20l20 10 20-10V14L24 4z"/>
-                <path d="M24 24v12"/>
-                <path d="M24 24l-8-4"/>
-                <path d="M24 24l8-4"/>
-                <path d="M16 12l8 4 8-4"/>
-              </svg>
-            </div>
-            <h3 class="trust-title" data-en="Built in Nepal" data-ne="नेपालमा निर्मित">Built in Nepal</h3>
-            <p class="trust-desc" data-en="Designed, developed, and maintained by Nepali developers for Nepali people." data-ne="नेपाली विकासकर्ताहरूद्वारा नेपाली मानिसहरूका लागि डिजाइन, विकास, र रेखदेख गरिएको।">Designed, developed, and maintained by Nepali developers for Nepali people.</p>
-          </article>
-
-          <article class="trust-card">
-            <div class="trust-icon" style="--trust-color: #EC4899;">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M24 4c-8 0-14 6-14 14 0 10 14 26 14 26s14-16 14-26c0-8-6-14-14-14z"/>
-                <circle cx="24" cy="18" r="5"/>
-              </svg>
-            </div>
-            <h3 class="trust-title" data-en="Community Driven" data-ne="समुदाय-संचालित">Community Driven</h3>
-            <p class="trust-desc" data-en="Every feature is shaped by real feedback from real users across Nepal." data-ne="प्रत्येक सुविधा नेपालभरका वास्तविक प्रयोगकर्ताहरूबाट प्राप्त वास्तविक प्रतिक्रियाद्वारा आकार दिइएको छ।">Every feature is shaped by real feedback from real users across Nepal.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Community Section -->
-    <section class="section community" id="community" aria-labelledby="community-heading">
-      <div class="section-container">
-        <div class="section-header">
-          <span class="section-tag" data-en="Get Involved" data-ne="सहभागी हुनुहोस्">Get Involved</span>
-          <h2 id="community-heading" class="section-title" data-en="Join Our Community" data-ne="हाम्रो समुदायमा सामेल हुनुहोस्">Join Our Community</h2>
-          <p class="section-desc" data-en="Help shape the future of digital tools in Nepal." data-ne="नेपालमा डिजिटल उपकरणहरूको भविष्य आकार दिन मद्दत गर्नुहोस्।">Help shape the future of digital tools in Nepal.</p>
-        </div>
-
-        <div class="community-grid">
-          <article class="community-card">
-            <div class="community-icon" style="--community-color: #8B5CF6;">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M24 4v8M24 36v8M4 24h8M36 24h8"/>
-                <circle cx="24" cy="24" r="10"/>
-                <path d="M24 18v6l4 2"/>
-              </svg>
-            </div>
-            <h3 class="community-title" data-en="Suggest a Tool" data-ne="उपकरण सुझाव दिनुहोस्">Suggest a Tool</h3>
-            <p class="community-desc" data-en="Have an idea for a utility that Nepal needs? Share it with us and let's build it together." data-ne="नेपाललाई चाहिने कुनै उपकरणको विचार छ? हामीलाई साझा गर्नुहोस् र एकसाथ निर्माण गरौं।">Have an idea for a utility that Nepal needs? Share it with us and let's build it together.</p>
-            <a href="mailto:utilitiesnepal@gmail.com?subject=Tool%20Suggestion" class="community-btn">
-              <span data-en="Submit Idea" data-ne="विचार पेश गर्नुहोस्">Submit Idea</span>
-            </a>
-          </article>
-
-          <article class="community-card">
-            <div class="community-icon" style="--community-color: #EF4444;">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M24 4v8M24 36v8M4 24h8M36 24h8"/>
-                <circle cx="24" cy="24" r="10"/>
-                <path d="M20 20l8 8M28 20l-8 8"/>
-              </svg>
-            </div>
-            <h3 class="community-title" data-en="Report a Bug" data-ne="बग रिपोर्ट गर्नुहोस्">Report a Bug</h3>
-            <p class="community-desc" data-en="Found something broken? Let us know and we'll fix it as quickly as possible." data-ne="केही बिग्रिएको भेट्टाउनुभयो? हामीलाई जानकारी दिनुहोस् र हामी सकेसम्म छिटो समाधान गर्नेछौं।">Found something broken? Let us know and we'll fix it as quickly as possible.</p>
-            <a href="mailto:utilitiesnepal@gmail.com?subject=Bug%20Report" class="community-btn">
-              <span data-en="Report Issue" data-ne="समस्या रिपोर्ट गर्नुहोस्">Report Issue</span>
-            </a>
-          </article>
-
-          <article class="community-card">
-            <div class="community-icon" style="--community-color: #10B981;">
-              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M24 4v8M24 36v8M4 24h8M36 24h8"/>
-                <circle cx="24" cy="24" r="10"/>
-                <path d="M24 18v6l4 2"/>
-              </svg>
-            </div>
-            <h3 class="community-title" data-en="Feature Requests" data-ne="सुविधा अनुरोधहरू">Feature Requests</h3>
-            <p class="community-desc" data-en="Want something new in an existing tool? Tell us what would make it better for you." data-ne="अवस्थित उपकरणमा केही नयाँ चाहनुहुन्छ? तपाईंका लागि यसलाई कसरी राम्रो बनाउने भनेर हामीलाई भन्नुहोस्।">Want something new in an existing tool? Tell us what would make it better for you.</p>
-            <a href="mailto:utilitiesnepal@gmail.com?subject=Feature%20Request" class="community-btn">
-              <span data-en="Request Feature" data-ne="सुविधा अनुरोध गर्नुहोस्">Request Feature</span>
-            </a>
-          </article>
-        </div>
-
-        <div class="social-links">
-          <h3 class="social-title" data-en="Connect With Us" data-ne="हामीसँग जडान हुनुहोस्">Connect With Us</h3>
-          <div class="social-grid">
-            <a href="#" class="social-link discord" aria-label="Discord" title="Discord (Coming Soon)">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
-              </svg>
-              <span>Discord</span>
-            </a>
-            <a href="#" class="social-link facebook" aria-label="Facebook" title="Facebook (Coming Soon)">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-              </svg>
-              <span>Facebook</span>
-            </a>
-            <a href="#" class="social-link whatsapp" aria-label="WhatsApp" title="WhatsApp (Coming Soon)">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-              </svg>
-              <span>WhatsApp</span>
-            </a>
-            <a href="#" class="social-link telegram" aria-label="Telegram" title="Telegram (Coming Soon)">
-              <svg viewBox="0 0 24 24" fill="currentColor">
-                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.329-.913.489-1.302.481-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-              </svg>
-              <span>Telegram</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="section contact" id="contact" aria-labelledby="contact-heading">
-      <div class="section-container">
-        <div class="section-header">
-          <span class="section-tag" data-en="Reach Out" data-ne="सम्पर्क गर्नुहोस्">Reach Out</span>
-          <h2 id="contact-heading" class="section-title" data-en="Contact Us" data-ne="हामीलाई सम्पर्क गर्नुहोस्">Contact Us</h2>
-          <p class="section-desc" data-en="Have questions, feedback, or want to collaborate? We'd love to hear from you." data-ne="प्रश्नहरू, प्रतिक्रिया, वा सहकार्य गर्न चाहनुहुन्छ? हामी तपाईंबाट सुन्न चाहन्छौं।">Have questions, feedback, or want to collaborate? We'd love to hear from you.</p>
-        </div>
-
-        <div class="contact-content">
-          <div class="contact-info">
-            <div class="contact-item">
-              <div class="contact-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                  <polyline points="22,6 12,13 2,6"/>
-                </svg>
-              </div>
-              <div class="contact-detail">
-                <span class="contact-label" data-en="Email" data-ne="इमेल">Email</span>
-                <a href="mailto:utilitiesnepal@gmail.com" class="contact-value">utilitiesnepal@gmail.com</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer" role="contentinfo">
-    <div class="footer-container">
-      <div class="footer-main">
-        <div class="footer-brand">
-          <a href="#" class="footer-logo" aria-label="Utilities Nepal Home">
-            <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M24 4L4 14v20l20 10 20-10V14L24 4z" stroke="currentColor" stroke-width="2" fill="none"/>
-              <path d="M24 4v20M4 14l20 10 20-10" stroke="currentColor" stroke-width="2"/>
-              <circle cx="24" cy="24" r="4" fill="currentColor"/>
-            </svg>
-            <span class="logo-text">Utilities Nepal</span>
-          </a>
-          <p class="footer-tagline" data-en="Built by ordinary people, for ordinary people." data-ne="सामान्य मानिसहरूद्वारा, सामान्य मानिसहरूका लागि निर्मित।">Built by ordinary people, for ordinary people.</p>
-        </div>
-
-        <div class="footer-links">
-          <div class="footer-column">
-            <h4 class="footer-heading" data-en="Company" data-ne="कम्पनी">Company</h4>
-            <ul>
-              <li><a href="#about" data-en="About" data-ne="हाम्रोबारे">About</a></li>
-              <li><a href="#products" data-en="Products" data-ne="उत्पादनहरू">Products</a></li>
-              <li><a href="#community" data-en="Community" data-ne="समुदाय">Community</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4 class="footer-heading" data-en="Legal" data-ne="कानुनी">Legal</h4>
-            <ul>
-              <li><a href="#" data-en="Privacy Policy" data-ne="गोपनीयता नीति">Privacy Policy</a></li>
-              <li><a href="#" data-en="Terms of Service" data-ne="सेवाका सर्तहरू">Terms of Service</a></li>
-            </ul>
-          </div>
-          <div class="footer-column">
-            <h4 class="footer-heading" data-en="Contact" data-ne="सम्पर्क">Contact</h4>
-            <ul>
-              <li><a href="mailto:utilitiesnepal@gmail.com">utilitiesnepal@gmail.com</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p class="copyright" data-en="© Utilities Nepal. Built by ordinary people, for ordinary people." data-ne="© यूटिलिटिज नेपाल। सामान्य मानिसहरूद्वारा, सामान्य मानिसहरूका लागि निर्मित।">© Utilities Nepal. Built by ordinary people, for ordinary people.</p>
-        <div class="footer-status">
-          <span class="status-dot online"></span>
-          <span data-en="All Systems Operational" data-ne="सबै प्रणालीहरू सञ्चालनमा">All Systems Operational</span>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Back to Top -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 19V5M5 12l7-7 7 7"/>
-    </svg>
-  </button>
-
-  <script src="script.js"></script>
+<!-- Scripts -->
+<script src="js/data.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/tools/date-converter.js"></script>
+<script src="js/tools/currency.js"></script>
+<script src="js/tools/weather.js"></script>
+<script src="js/tools/notes.js"></script>
+<script src="js/tools/study.js"></script>
+<script src="js/tools/radio.js"></script>
+<script src="js/tools/news.js"></script>
+<script src="js/tools/career.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
