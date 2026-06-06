@@ -134,6 +134,10 @@ const app = {
   },
 
   navigate(page, updateHash = true) {
+    if (page === 'about') {
+      window.location.href = 'about.html';
+      return;
+    }
     this.currentPage = page;
     if (updateHash) window.location.hash = page;
 
