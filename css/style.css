@@ -843,3 +843,272 @@ body {
 a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
   outline: 2px solid var(--primary); outline-offset: 2px;
 }
+
+/* ============================================
+   TAB BAR NAVIGATION
+   ============================================ */
+.tab-bar {
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+
+.tab-bar-scroll {
+  display: flex;
+  gap: 2px;
+  padding: 6px 12px;
+  min-width: max-content;
+}
+
+.tab-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: none;
+  border: none;
+  border-radius: var(--radius);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+  font-family: inherit;
+}
+.tab-item svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.tab-item:hover {
+  background: var(--surface-light);
+  color: var(--text-secondary);
+}
+.tab-item.active {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 2px 8px rgba(14, 116, 144, 0.3);
+}
+
+/* Adjust main content for tab bar */
+.main-content {
+  padding-top: 118px;
+}
+
+/* ============================================
+   MOBILE MENU DRAWER
+   ============================================ */
+.menu-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+.menu-drawer.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.menu-drawer-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+}
+
+.menu-drawer-content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 320px;
+  max-width: 85vw;
+  height: 100%;
+  background: var(--surface);
+  border-left: 1px solid var(--border);
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.menu-drawer.open .menu-drawer-content {
+  transform: translateX(0);
+}
+
+.menu-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.menu-drawer-header .nav-logo {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 800;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.menu-drawer-header .logo-icon {
+  width: 28px;
+  height: 28px;
+  color: var(--primary);
+}
+
+.menu-drawer-close {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  background: var(--surface-light);
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition);
+}
+.menu-drawer-close:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+.menu-drawer-close svg {
+  width: 18px;
+  height: 18px;
+}
+
+.menu-drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 0;
+}
+
+.menu-section {
+  padding: 0 16px;
+}
+.menu-section-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 12px 8px 8px;
+  margin-bottom: 4px;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all var(--transition);
+  margin-bottom: 2px;
+}
+.menu-item:hover {
+  background: var(--surface-light);
+  color: var(--text);
+}
+.menu-item svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--text-muted);
+}
+.menu-item:hover svg {
+  color: var(--primary);
+}
+
+.menu-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 12px 16px;
+}
+
+.menu-footer {
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.menu-footer-text {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+.menu-footer-email {
+  font-size: 0.75rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* ============================================
+   RESPONSIVE - Tab Bar
+   ============================================ */
+@media (max-width: 768px) {
+  .tab-item span {
+    display: none;
+  }
+  .tab-item {
+    padding: 8px 10px;
+  }
+  .tab-item svg {
+    width: 20px;
+    height: 20px;
+  }
+  .main-content {
+    padding-top: 112px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tab-bar-scroll {
+    padding: 6px 8px;
+  }
+  .tab-item {
+    padding: 8px;
+  }
+}
+
+/* Hide old nav menu on desktop - we use tab bar now */
+.nav-menu {
+  display: none;
+}
+
+/* Show nav-actions always */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+  padding-left: 0;
+  border-left: none;
+}
+
+/* Hide old hamburger, show new menu button */
+.nav-toggle {
+  display: none;
+}
+
+/* Adjust navbar for new layout */
+.navbar {
+  border-bottom: 1px solid var(--border);
+}
