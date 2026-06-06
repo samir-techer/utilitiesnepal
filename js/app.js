@@ -1,5 +1,6 @@
 // ============================================
-// UTILITIES NEPAL - MAIN APP
+// UTILITIES NEPAL - MAIN APP v2.1
+// Tab Bar + Drawer Navigation
 // ============================================
 
 const app = {
@@ -18,54 +19,36 @@ const app = {
   ],
 
   init() {
-    // Apply theme
     document.documentElement.setAttribute('data-theme', this.theme);
 
     // Event listeners
-    document.getElementById('navToggle')?.addEventListener('click', () => this.toggleMenu());
+    document.getElementById('menuToggle')?.addEventListener('click', () => this.openMenu());
     document.getElementById('themeToggle')?.addEventListener('click', () => this.toggleTheme());
     document.getElementById('globalSearchBtn')?.addEventListener('click', () => this.openSearch());
     document.getElementById('searchClose')?.addEventListener('click', () => this.closeSearch());
     document.getElementById('globalSearchInput')?.addEventListener('input', (e) => this.handleSearch(e.target.value));
     document.getElementById('backToTop')?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-    // Keyboard shortcuts
+    // Keyboard
     document.addEventListener('keydown', (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault(); this.openSearch();
-      }
-      if (e.key === 'Escape') this.closeSearch();
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); this.openSearch(); }
+      if (e.key === 'Escape') { this.closeSearch(); this.closeMenu(); }
     });
 
-    // Close search on overlay click
     document.getElementById('searchOverlay')?.addEventListener('click', (e) => {
       if (e.target === document.getElementById('searchOverlay')) this.closeSearch();
     });
 
-    // Scroll handler
     window.addEventListener('scroll', Utils.debounce(() => this.handleScroll(), 100));
+    window.addEventListener('hashchange', () => this.handleRoute());
 
-    // PWA install
     this.setupInstallPrompt();
 
-    // Service Worker
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js').catch(() => {});
     }
 
-    // Route handler
-    window.addEventListener('hashchange', () => this.handleRoute());
-
-    // Initial route
     this.handleRoute();
-  },
-
-  toggleMenu() {
-    const menu = document.getElementById('navMenu');
-    const toggle = document.getElementById('navToggle');
-    const isOpen = menu.classList.toggle('active');
-    toggle.setAttribute('aria-expanded', isOpen);
-    document.body.style.overflow = isOpen ? 'hidden' : '';
   },
 
   toggleTheme() {
@@ -74,13 +57,25 @@ const app = {
     localStorage.setItem('un-theme', this.theme);
   },
 
+  openMenu() {
+    const drawer = document.getElementById('menuDrawer');
+    drawer.classList.add('open');
+    drawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  },
+
+  closeMenu() {
+    const drawer = document.getElementById('menuDrawer');
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  },
+
   handleScroll() {
-    const navbar = document.getElementById('navbar');
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
     document.getElementById('backToTop').classList.toggle('visible', window.scrollY > 500);
   },
 
-  // Search
   openSearch() {
     const overlay = document.getElementById('searchOverlay');
     overlay.classList.add('active');
@@ -100,15 +95,11 @@ const app = {
 
   handleSearch(query) {
     const results = document.getElementById('searchResults');
-    if (!query.trim()) {
-      results.innerHTML = '';
-      return;
-    }
+    if (!query.trim()) { results.innerHTML = ''; return; }
 
     const q = query.toLowerCase();
-    const matches = this.tools.filter(t => 
-      t.name.toLowerCase().includes(q) || 
-      t.desc.toLowerCase().includes(q)
+    const matches = this.tools.filter(t =>
+      t.name.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q)
     );
 
     if (matches.length === 0) {
@@ -119,90 +110,49 @@ const app = {
     results.innerHTML = matches.map(t => `
       <a href="#${t.page}" class="search-result-item" onclick="app.navigate('${t.page}'); app.closeSearch();">
         <div class="search-result-icon" style="background:${t.color}20;color:${t.color};">${t.icon}</div>
-        <div class="search-result-info">
-          <h4>${t.name}</h4>
-          <p>${t.desc}</p>
-        </div>
+        <div class="search-result-info"><h4>${t.name}</h4><p>${t.desc}</p></div>
       </a>
     `).join('');
   },
 
-  // Routing
   handleRoute() {
     const hash = window.location.hash.replace('#', '') || 'dashboard';
     this.navigate(hash, false);
   },
 
   navigate(page, updateHash = true) {
-    if (page === 'about') {
-      window.location.href = 'about.html';
+    if (page === 'about' || page === 'privacy') {
+      window.location.href = page + '.html';
       return;
     }
     this.currentPage = page;
     if (updateHash) window.location.hash = page;
 
-    // Update nav active state
-    document.querySelectorAll('.nav-link').forEach(link => {
-      link.classList.toggle('active', link.dataset.page === page || (page === 'dashboard' && link.dataset.page === 'dashboard'));
+    // Update tab bar active state
+    document.querySelectorAll('.tab-item').forEach(tab => {
+      tab.classList.toggle('active', tab.dataset.page === page);
     });
 
-    // Close mobile menu
-    document.getElementById('navMenu')?.classList.remove('active');
-    document.getElementById('navToggle')?.setAttribute('aria-expanded', 'false');
-    document.body.style.overflow = '';
-
-    // Render page
+    this.closeMenu();
     this.renderPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   },
 
   renderPage(page) {
     const main = document.getElementById('main');
-
     switch(page) {
-      case 'dashboard':
-        main.innerHTML = this.renderDashboard();
-        break;
-      case 'tools':
-        main.innerHTML = this.renderToolsPage();
-        break;
-      case 'date':
-        main.innerHTML = DateConverter.render();
-        setTimeout(() => DateConverter.init(), 0);
-        break;
-      case 'currency':
-        main.innerHTML = CurrencyConverter.render();
-        setTimeout(() => CurrencyConverter.init(), 0);
-        break;
-      case 'weather':
-        main.innerHTML = WeatherTool.render();
-        setTimeout(() => WeatherTool.init(), 0);
-        break;
-      case 'notes':
-        main.innerHTML = NotesTool.render();
-        setTimeout(() => NotesTool.init(), 0);
-        break;
-      case 'study':
-        main.innerHTML = StudyTool.render();
-        setTimeout(() => StudyTool.init(), 0);
-        break;
-      case 'radio':
-        main.innerHTML = RadioTool.render();
-        setTimeout(() => RadioTool.init(), 0);
-        break;
-      case 'news':
-        main.innerHTML = NewsTool.render();
-        setTimeout(() => NewsTool.init(), 0);
-        break;
-      case 'career':
-        main.innerHTML = CareerTool.render();
-        setTimeout(() => CareerTool.init(), 0);
-        break;
-      default:
-        main.innerHTML = this.renderDashboard();
+      case 'dashboard': main.innerHTML = this.renderDashboard(); break;
+      case 'tools': main.innerHTML = this.renderToolsPage(); break;
+      case 'date': main.innerHTML = DateConverter.render(); setTimeout(() => DateConverter.init(), 0); break;
+      case 'currency': main.innerHTML = CurrencyConverter.render(); setTimeout(() => CurrencyConverter.init(), 0); break;
+      case 'weather': main.innerHTML = WeatherTool.render(); setTimeout(() => WeatherTool.init(), 0); break;
+      case 'notes': main.innerHTML = NotesTool.render(); setTimeout(() => NotesTool.init(), 0); break;
+      case 'study': main.innerHTML = StudyTool.render(); setTimeout(() => StudyTool.init(), 0); break;
+      case 'radio': main.innerHTML = RadioTool.render(); setTimeout(() => RadioTool.init(), 0); break;
+      case 'news': main.innerHTML = NewsTool.render(); setTimeout(() => NewsTool.init(), 0); break;
+      case 'career': main.innerHTML = CareerTool.render(); setTimeout(() => CareerTool.init(), 0); break;
+      default: main.innerHTML = this.renderDashboard();
     }
-
-    // Setup tabs
     this.setupTabs();
   },
 
@@ -211,16 +161,14 @@ const app = {
       tab.addEventListener('click', () => {
         const parent = tab.closest('.tool-container, .tool-page');
         if (!parent) return;
-
-        // Remove active from siblings
         tab.parentElement.querySelectorAll('.tool-tab, .career-tab').forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
-
-        // Show corresponding panel
-        const tabName = tab.dataset.tab || tab.textContent.toLowerCase().split(' ')[0];
-        parent.querySelectorAll('.tool-panel').forEach(p => p.classList.remove('active'));
-        const panel = parent.querySelector(`#panel-${tabName}`) || parent.querySelector(`.tool-panel:nth-child(${Array.from(tab.parentElement.children).indexOf(tab) + 1})`);
-        if (panel) panel.classList.add('active');
+        const tabName = tab.dataset.tab;
+        if (tabName) {
+          parent.querySelectorAll('.tool-panel').forEach(p => p.classList.remove('active'));
+          const panel = parent.querySelector(`#panel-${tabName}`);
+          if (panel) panel.classList.add('active');
+        }
       });
     });
   },
@@ -238,7 +186,6 @@ const app = {
             <div class="stat-item"><span class="stat-num">24/7</span><span class="stat-label">Available</span></div>
           </div>
         </div>
-
         <div class="quick-launch">
           <h2 class="quick-launch-title">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
@@ -254,7 +201,6 @@ const app = {
             `).join('')}
           </div>
         </div>
-
         ${this.renderFooter()}
       </div>
     `;
@@ -309,16 +255,17 @@ const app = {
                 </ul>
               </div>
               <div class="footer-column">
-                <h4 class="footer-heading">Contact</h4>
+                <h4 class="footer-heading">Info</h4>
                 <ul>
-                  <li><a href="mailto:utilitiesnepal@gmail.com">utilitiesnepal@gmail.com</a></li>
-                  <li><a href="#" onclick="Utils.toast('Coming soon')">About Us</a></li>
+                  <li><a href="about.html">About</a></li>
+                  <li><a href="privacy.html">Privacy</a></li>
+                  <li><a href="mailto:utilitiesnepal@gmail.com">Contact</a></li>
                 </ul>
               </div>
             </div>
           </div>
           <div class="footer-bottom">
-            <p class="copyright">© ${new Date().getFullYear()} Utilities Nepal. Built by ordinary people, for ordinary people.</p>
+            <p class="copyright">© ${new Date().getFullYear()} Utilities Nepal. Built by ordinary people, for ordinary people. 🇳🇵</p>
             <div class="footer-status"><span class="dot"></span>All Systems Operational</div>
           </div>
         </div>
@@ -333,7 +280,6 @@ const app = {
       deferredPrompt = e;
       document.getElementById('installPrompt').style.display = 'block';
     });
-
     document.getElementById('installBtn')?.addEventListener('click', async () => {
       if (!deferredPrompt) return;
       deferredPrompt.prompt();
@@ -343,14 +289,12 @@ const app = {
         Utils.toast('App installed!');
       }
     });
-
     document.getElementById('installDismiss')?.addEventListener('click', () => {
       document.getElementById('installPrompt').style.display = 'none';
     });
   }
 };
 
-// Initialize when DOM ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => app.init());
 } else {
