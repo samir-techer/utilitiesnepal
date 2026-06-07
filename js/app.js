@@ -178,31 +178,131 @@ const app = {
   renderDashboard() {
     return `
       <div class="page">
-        <div class="dashboard-hero">
-          <div class="hero-badge"><span class="dot"></span>Built in Nepal, for Nepal</div>
-          <h1 class="hero-title">Everything You Need.<br><span class="highlight">One Nepali Platform.</span></h1>
-          <p class="hero-subtitle">Powerful tools for students, professionals, and everyday Nepalis. All free, all local, all yours.</p>
-          <div class="hero-stats">
-            <div class="stat-item"><span class="stat-num">8</span><span class="stat-label">Tools</span></div>
-            <div class="stat-item"><span class="stat-num">10K+</span><span class="stat-label">Users</span></div>
-            <div class="stat-item"><span class="stat-num">24/7</span><span class="stat-label">Available</span></div>
+        <!-- Notice Bar -->
+        <div class="notice-bar">
+          <div class="notice-track">
+            <span class="notice-item">New tools added regularly</span>
+            <span class="notice-item">BS-AD Converter updated with accurate logic</span>
+            <span class="notice-item">More features coming soon</span>
+            <span class="notice-item">Built by ordinary people, for ordinary people</span>
+            <span class="notice-item">Nepal's Digital Toolbox - Utilities Nepal</span>
+            <span class="notice-item">Free tools for students, professionals & everyone</span>
+            <span class="notice-item">Dark mode & light mode supported</span>
+            <span class="notice-item">Works offline with PWA support</span>
           </div>
         </div>
-        <div class="quick-launch">
-          <h2 class="quick-launch-title">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
-            Quick Launch
-          </h2>
-          <div class="tools-grid">
+
+        <!-- Hero Section -->
+        <section class="modern-hero">
+          <div class="modern-hero-bg" aria-hidden="true">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="grid-pattern"></div>
+          </div>
+          <div class="modern-hero-content">
+            <div class="hero-badge"><span class="dot"></span>Built in Nepal, for Nepal</div>
+            <h1 class="modern-hero-title">Everything You Need.<br><span class="highlight">One Nepali Platform.</span></h1>
+            <p class="modern-hero-desc">Utilities Nepal is a growing ecosystem of digital tools designed to solve real-world problems for students, creators, and everyday people across Nepal. From date conversion to career portals, everything you need is here.</p>
+            <button class="modern-hero-cta" onclick="app.navigate('products')">
+              Explore Tools
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </section>
+
+        <!-- Tools Section -->
+        <section class="tools-section" id="tools">
+          <div class="section-header">
+            <span class="section-tag">Tools</span>
+            <h2 class="section-title">All Tools</h2>
+            <p class="section-desc">8 powerful utilities built for everyday Nepalis</p>
+          </div>
+          <div class="tools-grid-modern">
             ${this.tools.map(t => `
-              <a href="#${t.page}" class="tool-card" style="--card-color:${t.color};" onclick="app.navigate('${t.page}')">
+              <a href="#${t.page}" class="tool-card-modern" style="--card-color:${t.color};" onclick="app.navigate('${t.page}')">
                 <div class="tool-icon" style="color:${t.color};">${t.icon}</div>
                 <div class="tool-name">${t.name}</div>
                 <div class="tool-desc">${t.desc}</div>
               </a>
             `).join('')}
           </div>
-        </div>
+        </section>
+
+        <!-- Products Section -->
+        <section class="products-section" id="products">
+          <div class="section-header">
+            <span class="section-tag">Products</span>
+            <h2 class="section-title">Our Products</h2>
+            <p class="section-desc">Applications built under the Utilities Nepal ecosystem</p>
+          </div>
+          <div class="products-grid-modern">
+            <a href="https://b4tler-org.github.io/Audix.Player/" target="_blank" rel="noopener noreferrer" class="product-card-modern" style="--pb-color: #8B5CF6;">
+              <div class="product-icon" style="color:#8B5CF6;">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 38c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8z"/><path d="M28 30V12l12-6v18"/><circle cx="40" cy="24" r="4"/><path d="M12 30V8l12-6v18"/></svg>
+              </div>
+              <div class="product-meta">
+                <span class="product-cat">Music & Entertainment</span>
+                <span class="product-status">Live</span>
+              </div>
+              <h3 class="product-name">Audix</h3>
+              <p class="product-desc">AI-powered music player with radio streaming and smart listening features.</p>
+              <span class="product-link">Launch Audix →</span>
+            </a>
+            <a href="https://samir-techer.github.io/nebtools/" target="_blank" rel="noopener noreferrer" class="product-card-modern" style="--pb-color: #10B981;">
+              <div class="product-icon" style="color:#10B981;">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6h24v36H12z"/><path d="M18 6v36M30 6v36"/><path d="M12 14h24M12 22h24M12 30h24"/><circle cx="21" cy="18" r="1.5" fill="currentColor"/><circle cx="27" cy="26" r="1.5" fill="currentColor"/><circle cx="21" cy="34" r="1.5" fill="currentColor"/></svg>
+              </div>
+              <div class="product-meta">
+                <span class="product-cat">Education</span>
+                <span class="product-status">Live</span>
+              </div>
+              <h3 class="product-name">NebTools</h3>
+              <p class="product-desc">Study tools designed specifically for NEB students.</p>
+              <span class="product-link">Launch NebTools →</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section-modern" id="about">
+          <div class="section-header">
+            <span class="section-tag">About</span>
+            <h2 class="section-title">About Utilities Nepal</h2>
+            <p class="section-desc">Building useful digital tools for Nepal</p>
+          </div>
+          <div class="about-content-modern">
+            <div class="about-text-modern">
+              <p><strong>Utilities Nepal</strong> started with a simple goal: to build useful, accessible, and modern digital tools that help people in their daily lives.</p>
+              <p>Instead of creating technology for a small audience, we focus on <strong>practical solutions</strong> that anyone can use. From educational tools to entertainment platforms, every product is built with simplicity, performance, and accessibility in mind.</p>
+              <p>Our mission is to make technology more useful, accessible, and beneficial for people throughout Nepal. We believe great tools should be <strong>simple, reliable, and available to everyone</strong>.</p>
+            </div>
+            <div class="about-visual-modern">
+              <div class="about-visual-card">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M24 4L4 14v20l20 10 20-10V14L24 4z"/><path d="M24 4v20M4 14l20 10 20-10" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="4" fill="currentColor"/></svg>
+                <span>Utilities Nepal</span>
+              </div>
+            </div>
+          </div>
+          <div class="stats-grid-modern">
+            <div class="stat-card-modern">
+              <div class="stat-num">8</div>
+              <div class="stat-label">Total Tools</div>
+            </div>
+            <div class="stat-card-modern">
+              <div class="stat-num">2</div>
+              <div class="stat-label">Products</div>
+            </div>
+            <div class="stat-card-modern">
+              <div class="stat-num">∞</div>
+              <div class="stat-label">Updates</div>
+            </div>
+            <div class="stat-card-modern">
+              <div class="stat-num">24/7</div>
+              <div class="stat-label">Availability</div>
+            </div>
+          </div>
+        </section>
+
         ${this.renderFooter()}
       </div>
     `;
@@ -233,43 +333,52 @@ const app = {
 
   renderFooter() {
     return `
-      <footer class="footer">
-        <div class="footer-container">
-          <div class="footer-main">
-            <div class="footer-brand">
-              <a href="#dashboard" class="footer-logo" onclick="app.navigate('dashboard')">
+      <footer class="footer-modern">
+        <div class="footer-modern-container">
+          <div class="footer-modern-main">
+            <div class="footer-modern-brand">
+              <a href="#dashboard" class="footer-modern-logo" onclick="app.navigate('dashboard')">
                 <svg class="logo-icon" viewBox="0 0 48 48" fill="none"><path d="M24 4L4 14v20l20 10 20-10V14L24 4z" stroke="currentColor" stroke-width="2"/><path d="M24 4v20M4 14l20 10 20-10" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="24" r="4" fill="currentColor"/></svg>
                 <span class="logo-text">Utilities Nepal</span>
               </a>
-              <p class="footer-tagline">Built by ordinary people, for ordinary people.</p>
+              <p class="footer-modern-tagline">Built by ordinary people, for ordinary people. 🇳🇵</p>
+              <div class="footer-modern-social">
+                <a href="mailto:utilitiesnepal@gmail.com" title="Email">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </a>
+                <a href="about.html" title="About">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                </a>
+              </div>
             </div>
-            <div class="footer-links">
-              <div class="footer-column">
-                <h4 class="footer-heading">Tools</h4>
+            <div class="footer-modern-links">
+              <div class="footer-modern-column">
+                <h4>Navigate</h4>
+                <ul>
+                  <li><a href="#dashboard" onclick="app.navigate('dashboard')">Home</a></li>
+                  <li><a href="#products" onclick="app.navigate('products')">Products</a></li>
+                  <li><a href="#tools" onclick="app.navigate('tools')">Tools</a></li>
+                  <li><a href="about.html">About</a></li>
+                </ul>
+              </div>
+              <div class="footer-modern-column">
+                <h4>Tools</h4>
                 <ul>
                   ${this.tools.slice(0, 4).map(t => `<li><a href="#${t.page}" onclick="app.navigate('${t.page}')">${t.name}</a></li>`).join('')}
                 </ul>
               </div>
-              <div class="footer-column">
-                <h4 class="footer-heading">More</h4>
+              <div class="footer-modern-column">
+                <h4>Legal</h4>
                 <ul>
-                  ${this.tools.slice(4).map(t => `<li><a href="#${t.page}" onclick="app.navigate('${t.page}')">${t.name}</a></li>`).join('')}
-                </ul>
-              </div>
-              <div class="footer-column">
-                <h4 class="footer-heading">Info</h4>
-                <ul>
-                  <li><a href="#products" onclick="app.navigate('products')">Products</a></li>
-                  <li><a href="about.html">About</a></li>
-                  <li><a href="privacy.html">Privacy</a></li>
+                  <li><a href="privacy.html">Privacy Policy</a></li>
                   <li><a href="mailto:utilitiesnepal@gmail.com">Contact</a></li>
                 </ul>
               </div>
             </div>
           </div>
-          <div class="footer-bottom">
-            <p class="copyright">© ${new Date().getFullYear()} Utilities Nepal. Built by ordinary people, for ordinary people. 🇳🇵</p>
-            <div class="footer-status"><span class="dot"></span>All Systems Operational</div>
+          <div class="footer-modern-bottom">
+            <p class="footer-modern-copyright">© 2026 Utilities Nepal. Made with Ambition.</p>
+            <div class="footer-modern-status"><span class="dot"></span>All Systems Operational</div>
           </div>
         </div>
       </footer>
