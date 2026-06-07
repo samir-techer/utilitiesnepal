@@ -1847,3 +1847,25 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
     min-height: 50vh;
   }
 }
+
+/* --- Active Menu Item Highlight --- */
+.menu-item.active {
+  background: var(--primary);
+  color: white;
+}
+.menu-item.active svg {
+  color: white;
+}
+
+/* --- Fix padding after removing tab bar --- */
+.main-content {
+  padding-top: 64px;
+}
+
+/* Notice bar position fix */
+.notice-bar {
+  top: 64px;
+}
+
+/* Remove old tab-bar styles that are no longer needed */
+.tab-bar { display: none !important; }
