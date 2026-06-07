@@ -129,8 +129,9 @@ const app = {
     if (updateHash) window.location.hash = page;
 
     // Update tab bar active state
+    const activePage = page === 'products' ? 'tools' : page;
     document.querySelectorAll('.tab-item').forEach(tab => {
-      tab.classList.toggle('active', tab.dataset.page === page);
+      tab.classList.toggle('active', tab.dataset.page === activePage);
     });
 
     this.closeMenu();
@@ -142,7 +143,8 @@ const app = {
     const main = document.getElementById('main');
     switch(page) {
       case 'dashboard': main.innerHTML = this.renderDashboard(); break;
-      case 'tools': main.innerHTML = this.renderToolsPage(); break;
+      case 'tools':
+      case 'products': main.innerHTML = this.renderToolsPage(); break;
       case 'date': main.innerHTML = DateConverter.render(); setTimeout(() => DateConverter.init(), 0); break;
       case 'currency': main.innerHTML = CurrencyConverter.render(); setTimeout(() => CurrencyConverter.init(), 0); break;
       case 'weather': main.innerHTML = WeatherTool.render(); setTimeout(() => WeatherTool.init(), 0); break;
@@ -257,6 +259,7 @@ const app = {
               <div class="footer-column">
                 <h4 class="footer-heading">Info</h4>
                 <ul>
+                  <li><a href="#products" onclick="app.navigate('products')">Products</a></li>
                   <li><a href="about.html">About</a></li>
                   <li><a href="privacy.html">Privacy</a></li>
                   <li><a href="mailto:utilitiesnepal@gmail.com">Contact</a></li>
