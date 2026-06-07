@@ -332,7 +332,7 @@ const app = {
         ${this.renderFooter()}
       </div>
     `;
-  }
+  },
 
   renderProductsPage() {
     return `
