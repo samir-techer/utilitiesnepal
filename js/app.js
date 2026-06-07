@@ -128,10 +128,13 @@ const app = {
     this.currentPage = page;
     if (updateHash) window.location.hash = page;
 
-    // Update tab bar active state
-    const activePage = page === 'products' ? 'tools' : page;
-    document.querySelectorAll('.tab-item').forEach(tab => {
-      tab.classList.toggle('active', tab.dataset.page === activePage);
+    // Update active state in drawer menu
+    document.querySelectorAll('.menu-item').forEach(item => {
+      const href = item.getAttribute('href');
+      if (href) {
+        const itemPage = href.replace('#', '');
+        item.classList.toggle('active', itemPage === page);
+      }
     });
 
     this.closeMenu();
@@ -143,8 +146,8 @@ const app = {
     const main = document.getElementById('main');
     switch(page) {
       case 'dashboard': main.innerHTML = this.renderDashboard(); break;
-      case 'tools':
-      case 'products': main.innerHTML = this.renderToolsPage(); break;
+      case 'tools': main.innerHTML = this.renderToolsPage(); break;
+      case 'products': main.innerHTML = this.renderProductsPage(); break;
       case 'date': main.innerHTML = DateConverter.render(); setTimeout(() => DateConverter.init(), 0); break;
       case 'currency': main.innerHTML = CurrencyConverter.render(); setTimeout(() => CurrencyConverter.init(), 0); break;
       case 'weather': main.innerHTML = WeatherTool.render(); setTimeout(() => WeatherTool.init(), 0); break;
@@ -315,15 +318,55 @@ const app = {
           <h1 class="page-title">All Tools</h1>
           <p class="page-desc">Explore every utility in the Nepal digital toolbox.</p>
         </div>
-        <div class="quick-launch">
-          <div class="tools-grid">
+        <div class="tools-section">
+          <div class="tools-grid-modern">
             ${this.tools.map(t => `
-              <a href="#${t.page}" class="tool-card" style="--card-color:${t.color};" onclick="app.navigate('${t.page}')">
+              <a href="#${t.page}" class="tool-card-modern" style="--card-color:${t.color};" onclick="app.navigate('${t.page}')">
                 <div class="tool-icon" style="color:${t.color};">${t.icon}</div>
                 <div class="tool-name">${t.name}</div>
                 <div class="tool-desc">${t.desc}</div>
               </a>
             `).join('')}
+          </div>
+        </div>
+        ${this.renderFooter()}
+      </div>
+    `;
+  }
+
+  renderProductsPage() {
+    return `
+      <div class="page">
+        <div class="page-header">
+          <h1 class="page-title">Our Products</h1>
+          <p class="page-desc">Applications built under the Utilities Nepal ecosystem</p>
+        </div>
+        <div class="products-section">
+          <div class="products-grid-modern">
+            <a href="https://b4tler-org.github.io/Audix.Player/" target="_blank" rel="noopener noreferrer" class="product-card-modern" style="--pb-color: #8B5CF6;">
+              <div class="product-icon" style="color:#8B5CF6;">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 38c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8z"/><path d="M28 30V12l12-6v18"/><circle cx="40" cy="24" r="4"/><path d="M12 30V8l12-6v18"/></svg>
+              </div>
+              <div class="product-meta">
+                <span class="product-cat">Music & Entertainment</span>
+                <span class="product-status">Live</span>
+              </div>
+              <h3 class="product-name">Audix</h3>
+              <p class="product-desc">AI-powered music player with radio streaming and smart listening features.</p>
+              <span class="product-link">Launch Audix →</span>
+            </a>
+            <a href="https://samir-techer.github.io/nebtools/" target="_blank" rel="noopener noreferrer" class="product-card-modern" style="--pb-color: #10B981;">
+              <div class="product-icon" style="color:#10B981;">
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6h24v36H12z"/><path d="M18 6v36M30 6v36"/><path d="M12 14h24M12 22h24M12 30h24"/><circle cx="21" cy="18" r="1.5" fill="currentColor"/><circle cx="27" cy="26" r="1.5" fill="currentColor"/><circle cx="21" cy="34" r="1.5" fill="currentColor"/></svg>
+              </div>
+              <div class="product-meta">
+                <span class="product-cat">Education</span>
+                <span class="product-status">Live</span>
+              </div>
+              <h3 class="product-name">NebTools</h3>
+              <p class="product-desc">Study tools designed specifically for NEB students.</p>
+              <span class="product-link">Launch NebTools →</span>
+            </a>
           </div>
         </div>
         ${this.renderFooter()}
