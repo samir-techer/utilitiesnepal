@@ -1,4 +1,4 @@
-const CACHE_NAME = 'un-v2';
+const CACHE_NAME = 'un-v3';
 const STATIC_ASSETS = [
   '/','/index.html','/css/style.css','/js/data.js','/js/utils.js',
   '/js/tools/date-converter.js','/js/tools/currency.js','/js/tools/weather.js',
