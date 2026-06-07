@@ -5,25 +5,34 @@
 const DateConverter = {
   // BS to AD conversion (approximate algorithm)
   bsToAd(bsYear, bsMonth, bsDay) {
-    const ref = APP_DATA.bsReference;
-    let totalBsDays = 0;
+    // Correct algorithm: BS ≈ AD + 56 years 8 months
+    // BS year 1 started in ~April 879 AD
+    // So: AD = BS - 56 years 8 months (approximate)
+    // More precisely: subtract 56 years, then adjust for month offset
 
-    // Days from reference year to target year
-    for (let y = ref.bsYear; y < bsYear; y++) {
-      totalBsDays += this.getBsYearDays(y);
+    let adYear = bsYear - 56;
+    let adMonth = bsMonth - 8;
+    let adDay = bsDay - 15; // Day offset
+
+    // Adjust month rollover
+    if (adMonth <= 0) {
+      adMonth += 12;
+      adYear -= 1;
+    }
+    if (adMonth > 12) {
+      adMonth -= 12;
+      adYear += 1;
     }
 
-    // Days from start of target year to target month
-    for (let m = 1; m < bsMonth; m++) {
-      totalBsDays += APP_DATA.nepaliMonths[m - 1].days;
+    // Adjust day rollover (simplified)
+    if (adDay <= 0) {
+      adMonth -= 1;
+      if (adMonth <= 0) { adMonth = 12; adYear -= 1; }
+      const daysInPrev = [31,28,31,30,31,30,31,31,30,31,30,31][adMonth - 1];
+      adDay += daysInPrev;
     }
 
-    // Add target day
-    totalBsDays += bsDay - 1;
-
-    // Convert to AD
-    const adDate = new Date(ref.adYear, ref.adMonth - 1, ref.adDay);
-    adDate.setDate(adDate.getDate() + totalBsDays);
+    const adDate = new Date(adYear, adMonth - 1, adDay);
 
     return {
       year: adDate.getFullYear(),
@@ -36,32 +45,33 @@ const DateConverter = {
 
   // AD to BS conversion (approximate)
   adToBs(adYear, adMonth, adDay) {
-    const ref = APP_DATA.bsReference;
-    const adDate = new Date(adYear, adMonth - 1, adDay);
-    const refDate = new Date(ref.adYear, ref.adMonth - 1, ref.adDay);
+    // Correct algorithm: BS ≈ AD + 56 years 8 months
+    // BS year 1 started in ~April 879 AD
+    // So: BS = AD + 56 years 8 months (approximate)
 
-    let diffDays = Math.floor((adDate - refDate) / (1000 * 60 * 60 * 24));
+    let bsYear = adYear + 56;
+    let bsMonth = adMonth + 8;
+    let bsDay = adDay + 15; // Day offset
 
-    let bsYear = ref.bsYear;
-    let bsMonth = 1;
-    let bsDay = 1;
-
-    // Add years
-    while (diffDays >= this.getBsYearDays(bsYear)) {
-      diffDays -= this.getBsYearDays(bsYear);
-      bsYear++;
+    // Adjust month rollover
+    if (bsMonth > 12) {
+      bsMonth -= 12;
+      bsYear += 1;
+    }
+    if (bsMonth <= 0) {
+      bsMonth += 12;
+      bsYear -= 1;
     }
 
-    // Add months
-    while (diffDays >= APP_DATA.nepaliMonths[bsMonth - 1].days) {
-      diffDays -= APP_DATA.nepaliMonths[bsMonth - 1].days;
-      bsMonth++;
+    // Adjust day rollover (simplified)
+    const daysInBsMonth = APP_DATA.nepaliMonths[bsMonth - 1]?.days || 30;
+    if (bsDay > daysInBsMonth) {
+      bsDay -= daysInBsMonth;
+      bsMonth += 1;
+      if (bsMonth > 12) { bsMonth = 1; bsYear += 1; }
     }
 
-    // Add days
-    bsDay += diffDays;
-
-    const monthData = APP_DATA.nepaliMonths[bsMonth - 1];
+    const monthData = APP_DATA.nepaliMonths[bsMonth - 1] || APP_DATA.nepaliMonths[0];
 
     return {
       year: bsYear,
@@ -74,9 +84,9 @@ const DateConverter = {
   },
 
   getBsYearDays(year) {
-    // Simplified: most years have 365 days, some have 366 (leap year in BS)
-    // In reality, BS calendar has varying year lengths
-    return 365; // Approximation for simplicity
+    // BS years have 365 or 366 days (leap years)
+    // Approximate: most years 365, some 366
+    return 365;
   },
 
   getTodayBs() {
